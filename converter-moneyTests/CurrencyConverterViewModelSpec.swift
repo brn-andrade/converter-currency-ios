@@ -12,20 +12,20 @@ class CurrencyConverterViewModelSpec: XCTestCase {
     
     var sut: CurrencyConverterViewModel!
     var quoteListMock: QuoteList!
-
+    
     override func setUpWithError() throws {
         sut = CurrencyConverterViewModel()
         
         quoteListMock = QuoteList(success: true, error: nil, source: nil, quotes: ["USDAED": 3.673198, "USDAFN": 76.89408])
         sut.setQuotesArray(quoteList: quoteListMock)
     }
-
+    
     override func tearDownWithError() throws {
         sut = nil
     }
-
+    
     func testArrayQuotes() {
-
+        
         XCTAssertEqual(2, sut.quotes.count)
     }
     
@@ -36,7 +36,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         XCTAssert((sut.selectedOrigin != nil), "Origin not selected")
         XCTAssertEqual("AED", sut.selectedOrigin?.code)
     }
-
+    
     func testSelectedQuoteDestiny() {
         
         sut.quoteSelect(type: .destiny, code: "AED")
@@ -48,12 +48,12 @@ class CurrencyConverterViewModelSpec: XCTestCase {
     func testSearchQuoteByCode() {
         
         let quote = sut.searchQuote(with: "AFN")
-   
+        
         XCTAssertEqual("AFN", quote?.code)
     }
     
     func testConverterCurrencyEquals() {
-   
+        
         sut.quoteSelect(type: .origin, code: "AED")
         sut.quoteSelect(type: .destiny, code: "AED")
         
@@ -64,7 +64,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
     
     
     func testConverterCurrencyErrorNotOrigin() {
-   
+        
         XCTAssertNil(sut.selectedOrigin)
         
         XCTAssertThrowsError(try sut.converterCurrency(1.00)) { error in
@@ -89,7 +89,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         
         sut.quoteSelect(type: .origin, code: "AED")
         sut.quoteSelect(type: .destiny, code: "AFN")
-   
+        
         let value = try! sut.converterCurrency(1.00)
         
         XCTAssertEqual(value, "20.93")
@@ -103,7 +103,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         
         sut.quoteSelect(type: .origin, code: "USD")
         sut.quoteSelect(type: .destiny, code: "BRL")
-   
+        
         let value = try! sut.converterCurrency(1.00)
         
         XCTAssertEqual(value, "5.69")
@@ -119,7 +119,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
     }
     
     
-    func testconverterValueToFloatValidationemptyQuoteOrigin() {
+    func testConverterValueToFloatValidationemptyQuoteOrigin() {
         
         XCTAssertNil(sut.selectedOrigin)
         
@@ -127,8 +127,8 @@ class CurrencyConverterViewModelSpec: XCTestCase {
             XCTAssertEqual(error as! ValidationError, ValidationError.emptyQuoteOrigin)
         }
     }
-
-    func testconverterValueToFloatValidationemptyQuoteDestiny() {
+    
+    func testConverterValueToFloatValidationemptyQuoteDestiny() {
         
         sut.quoteSelect(type: .origin, code: "AED")
         
@@ -137,7 +137,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         }
     }
     
-    func testconverterValueToFloatValidationInvalidFloatValue() {
+    func testConverterValueToFloatValidationInvalidFloatValue() {
         
         sut.quoteSelect(type: .origin, code: "AED")
         sut.quoteSelect(type: .destiny, code: "AFN")
@@ -147,7 +147,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         }
     }
     
-    func testconverterValueToFloatValidationZeroValue() {
+    func testConverterValueToFloatValidationZeroValue() {
         
         sut.quoteSelect(type: .origin, code: "AED")
         sut.quoteSelect(type: .destiny, code: "AFN")
@@ -157,7 +157,7 @@ class CurrencyConverterViewModelSpec: XCTestCase {
         }
     }
     
-    func testconverterValueToFloatValidationValueCorrect() {
+    func testConverterValueToFloatValidationValueCorrect() {
         
         sut.quoteSelect(type: .origin, code: "AED")
         sut.quoteSelect(type: .destiny, code: "AFN")
