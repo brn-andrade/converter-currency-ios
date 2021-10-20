@@ -63,11 +63,11 @@ class CurrencyListViewModel {
     
     func fetchCurrencyList(errorCallback: @escaping (ErrorNetwork?) -> Void, successCallback: @escaping () -> Void) {
         
-        CurrencyAPI.shared.fetchCurrencyList { (result) in
+        CurrencyAPI.shared.fetchCurrencyList { [weak self] (result) in
             switch result {
             case .success(let list):
                 DispatchQueue.main.async {
-                    self.setCurrenciesArray(currencyList: list)
+                    self?.setCurrenciesArray(currencyList: list)
                     successCallback()
                 }
             case .error(let error):

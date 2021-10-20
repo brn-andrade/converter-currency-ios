@@ -69,11 +69,11 @@ class CurrencyConverterViewModel {
     
     func fetchQuotes(errorCallback: @escaping (ErrorNetwork) -> Void) {
         
-        CurrencyAPI.shared.fetchQuotes { (result) in
+        CurrencyAPI.shared.fetchQuotes { [weak self] (result) in
             switch result {
             case .success(let list):
                 DispatchQueue.main.async {
-                    self.setQuotesArray(quoteList: list)
+                    self?.setQuotesArray(quoteList: list)
                 }
             case .error(let error):
                 errorCallback(error)
