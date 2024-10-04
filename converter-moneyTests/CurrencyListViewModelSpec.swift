@@ -19,6 +19,7 @@ class CurrencyListViewModelSpec: XCTestCase {
         currencyListMock = CurrencyList(success: true, error: nil, currencies: ["AED":"United Arab Emirates Dirham", "AFN": "Afghan Afghani"])
         
         sut.setCurrenciesArray(currencyList: currencyListMock)
+        
     }
 
     override func tearDownWithError() throws {
@@ -69,6 +70,4 @@ class CurrencyListViewModelSpec: XCTestCase {
         XCTAssertEqual("Afghan Afghani", sut.currencies[0].description)
         XCTAssertEqual("United Arab Emirates Dirham", sut.currenciesFilter[1].description)
     }
-    
-    
 }

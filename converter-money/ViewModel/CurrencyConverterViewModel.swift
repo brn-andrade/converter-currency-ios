@@ -17,13 +17,13 @@ class CurrencyConverterViewModel {
     
     func quoteSelect(type: TypeConverter, code: String) {
         
-        if let quote = self.searchQuote(with: code) {
-            switch type {
-            case .origin:
-                self.selectedOrigin = quote
-            case .destiny:
-                self.selectedDestiny = quote
-            }
+        let quote: Quote = self.searchQuote(with: code) ?? Quote(code: code, value: 1.00)
+        
+        switch type {
+        case .origin:
+            self.selectedOrigin = quote
+        case .destiny:
+            self.selectedDestiny = quote
         }
     }
     
@@ -69,11 +69,11 @@ class CurrencyConverterViewModel {
     
     func fetchQuotes(errorCallback: @escaping (ErrorNetwork) -> Void) {
         
-        CurrencyAPI.shared.fetchQuotes { (result) in
+        CurrencyAPI.shared.fetchQuotes { [weak self] (result) in
             switch result {
             case .success(let list):
                 DispatchQueue.main.async {
-                    self.setQuotesArray(quoteList: list)
+                    self?.setQuotesArray(quoteList: list)
                 }
             case .error(let error):
                 errorCallback(error)
@@ -83,9 +83,9 @@ class CurrencyConverterViewModel {
     
     func converterValueToFloatValidation(_ valueToConverter: String) throws -> Float {
         
-        guard let _ = self.selectedOrigin else { throw ValidationError.emptyQuoteOrigin }
+        guard let selectedOrigin = self.selectedOrigin else { throw ValidationError.emptyQuoteOrigin }
         
-        guard let _ = self.selectedDestiny else { throw ValidationError.emptyQuoteDestiny }
+        guard let selectedDestiny = self.selectedDestiny else { throw ValidationError.emptyQuoteDestiny }
         
         guard let valueFloat = Float(valueToConverter.replacingOccurrences(of: ",", with: "", options: .literal, range: nil)) else { throw
             ValidationError.invalidValue }

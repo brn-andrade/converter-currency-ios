@@ -34,7 +34,7 @@ class MainCoordinator: Coordinator {
     
     func goToConverter(type: TypeConverter, currency: Currency) {
     
-        if let vc = navigationController.viewControllers.first(where: {$0 is CurrencyConverterViewController }) as? CurrencyConverterViewController {
+        if let vc = navigationController.viewControllers.first(where: { $0 is CurrencyConverterViewController }) as? CurrencyConverterViewController {
             vc.getSelectCurrency(type: type, currency: currency)
             
             navigationController.popToViewController(vc, animated: true)

@@ -30,8 +30,9 @@ class CurrencyListViewModel {
         if search.isEmpty {
             self.currenciesFilter = self.currencies
         } else {
-            self.currenciesFilter = currencies.filter { filter -> Bool in
-                filter.code.uppercased().contains(search) || filter.description.uppercased().contains(search)
+            self.currenciesFilter = currencies.filter {
+                $0.code.uppercased().contains(search) ||
+                $0.description.uppercased().contains(search)
             }
         }
     }
@@ -63,11 +64,11 @@ class CurrencyListViewModel {
     
     func fetchCurrencyList(errorCallback: @escaping (ErrorNetwork?) -> Void, successCallback: @escaping () -> Void) {
         
-        CurrencyAPI.shared.fetchCurrencyList { (result) in
+        CurrencyAPI.shared.fetchCurrencyList { [weak self] (result) in
             switch result {
             case .success(let list):
                 DispatchQueue.main.async {
-                    self.setCurrenciesArray(currencyList: list)
+                    self?.setCurrenciesArray(currencyList: list)
                     successCallback()
                 }
             case .error(let error):
