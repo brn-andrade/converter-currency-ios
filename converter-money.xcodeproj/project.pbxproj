@@ -26,7 +26,6 @@
 		B11CEC6A252BF1CB0084328B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CEC69252BF1CB0084328B /* UIViewController+Extension.swift */; };
 		B12DD4F3252A93B7006234DB /* CurrencyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12DD4F2252A93B7006234DB /* CurrencyList.swift */; };
 		B12DD4FB252A95C2006234DB /* ErrorApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12DD4FA252A95C2006234DB /* ErrorApi.swift */; };
-		B136B1232540B577001EDCB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B136B1212540B577001EDCB4 /* Main.storyboard */; };
 		B1668F97253B77D9008C1B55 /* CurrencyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1668F96253B77D9008C1B55 /* CurrencyField.swift */; };
 		B1BC650626FA874B004C38D3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1BC650526FA874A004C38D3 /* Media.xcassets */; };
 		B1BC650A26FD35A6004C38D3 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BC650926FD35A6004C38D3 /* SnapshotHelper.swift */; };
@@ -78,7 +77,6 @@
 		B11CEC69252BF1CB0084328B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B12DD4F2252A93B7006234DB /* CurrencyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyList.swift; sourceTree = "<group>"; };
 		B12DD4FA252A95C2006234DB /* ErrorApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorApi.swift; sourceTree = "<group>"; };
-		B136B1222540B577001EDCB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1668F96253B77D9008C1B55 /* CurrencyField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyField.swift; sourceTree = "<group>"; };
 		B1BC650526FA874A004C38D3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B1BC650926FD35A6004C38D3 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 			children = (
 				B10515A925298AD5002CCCE0 /* cell */,
 				B1FBBB2125282F9C008A4D69 /* LaunchScreen.storyboard */,
-				B136B1212540B577001EDCB4 /* Main.storyboard */,
 				B10515A025298A0B002CCCE0 /* CurrencyListViewController.xib */,
 				B105157B252962A7002CCCE0 /* CurrencyConverterViewController.xib */,
 			);
@@ -387,7 +384,6 @@
 				B10515A225298A0B002CCCE0 /* CurrencyListViewController.xib in Resources */,
 				B1BC650626FA874B004C38D3 /* Media.xcassets in Resources */,
 				B10515AD25298B0E002CCCE0 /* CurrencyUiTableViewCell.xib in Resources */,
-				B136B1232540B577001EDCB4 /* Main.storyboard in Resources */,
 				B105157D252962A7002CCCE0 /* CurrencyConverterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,14 +468,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B136B1212540B577001EDCB4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B136B1222540B577001EDCB4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B1FBBB2125282F9C008A4D69 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -614,8 +602,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				CODE_SIGN_ENTITLEMENTS = "converter-money/converter-money.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DBQ354UY9W;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "converter-money/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -623,6 +614,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.BrunoAndrade.converter-money";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -633,8 +625,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				CODE_SIGN_ENTITLEMENTS = "converter-money/converter-money.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DBQ354UY9W;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = "converter-money/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,6 +637,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.BrunoAndrade.converter-money";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
